@@ -8,7 +8,7 @@ localityName = Locality Name (eg, city)
 organizationalUnitName = Organizational Unit Name (eg, section)
 
 [v3_req] 
-keyUsage = keyEncipherment, dataEncipherment
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
 extendedKeyUsage = serverAuth
 subjectAltName = @alt_names
 
