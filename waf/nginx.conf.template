@@ -28,8 +28,8 @@ http {
     server {
         listen ${SSL_PORT} ssl;
 
-        ModSecurityEnabled on;
-        ModSecurityConfig modsecurity.conf;
+            ModSecurityEnabled on;
+            ModSecurityConfig modsecurity.conf;
 
         client_max_body_size ${CLIENT_MAX_BODY_SIZE};
         ssl_certificate     /usr/local/nginx/certs/cert.pem;

@@ -31,7 +31,6 @@ RUN ln -s /usr/local/nginx/sbin/nginx /bin/nginx && \
 	apt-get autoremove -y
 
 COPY modsec_includes.conf /usr/local/nginx/conf/modsec_includes.conf
-COPY modsecurity.conf /usr/local/nginx/conf/modsecurity.conf
 COPY crs-setup.conf /usr/local/nginx/conf/rules/crs-setup.conf
 
 ENV SSL_PORT=443
@@ -41,6 +40,7 @@ RUN apt-get install -y openssl gettext
 ADD add_self_signed_certs.sh /
 ADD openssl.cnf.template /
 ADD nginx.conf.template /
+COPY modsecurity.conf.template /
 ADD configure_nginx.sh /
 
 RUN mkdir /usr/local/nginx/certs/
