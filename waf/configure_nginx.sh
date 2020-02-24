@@ -9,7 +9,8 @@ export SSL_PORT=${SSL_PORT:-443}
 
 REPLACEABLE='$HTTP_VERSION:$TARGET_SCHEME:$TARGET_PORT:$TARGET_HOST:$TARGET_HOST_HEADER:$CLIENT_MAX_BODY_SIZE:$SSL_PORT'
 
-envsubst $REPLACEABLE < /nginx.conf.template > /etc/nginx/nginx.conf
+envsubst $REPLACEABLE < /nginx.conf.template > /usr/local/nginx/conf/nginx.conf
+
 
 /add_self_signed_certs.sh
 

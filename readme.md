@@ -1,6 +1,6 @@
 # Web Security Docker
 
-one docker to rule them all!
+One docker to rule them all!
 
 ## Environment variables
 

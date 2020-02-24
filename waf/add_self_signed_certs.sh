@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 DOMAIN=${DOMAIN:-www.example.com}
-OUTPUT_DIR=/etc/nginx/certs
+OUTPUT_DIR=/usr/local/nginx/certs
 
 mkdir -p $OUTPUT_DIR
 

@@ -1,25 +1,39 @@
+user  root;
 worker_processes 1;
 pid /run/nginx.pid;
 daemon off;
 
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
 error_log stderr info;
 
-events { worker_connections 1024; }
+events { 
+    worker_connections 1024; 
+}
 
 http {
+    include mime.types;
+    default_type application/octet-stream;
     sendfile on;
 
     map $http_upgrade $connection_upgrade {
         default upgrade;
         '' close;
     }
-
+    keepalive_timeout  65;
     server {
         listen ${SSL_PORT} ssl;
 
+        ModSecurityEnabled on;
+        ModSecurityConfig modsecurity.conf;
+
         client_max_body_size ${CLIENT_MAX_BODY_SIZE};
-        ssl_certificate     /etc/nginx/certs/cert.pem;
-        ssl_certificate_key /etc/nginx/certs/key.pem;
+        ssl_certificate     /usr/local/nginx/certs/cert.pem;
+        ssl_certificate_key /usr/local/nginx/certs/key.pem;
 
         ssl_session_cache  builtin:1000  shared:SSL:10m;
         ssl_protocols  TLSv1.2 TLSv1.3;
