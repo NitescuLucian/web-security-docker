@@ -53,9 +53,15 @@ http {
             proxy_set_header Upgrade           $http_upgrade;
             proxy_set_header Connection        $connection_upgrade;
 
+            proxy_cookie_path / "/; Secure; HttpOnly";
+
+
             proxy_buffer_size        128k;
             proxy_buffers            4 256k;
             proxy_busy_buffers_size  256k;
         }
+
+
+        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
     }
 }

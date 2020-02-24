@@ -13,6 +13,7 @@ REPLACEABLE='$SEC_RULE_ENGINE:$HTTP_VERSION:$TARGET_SCHEME:$TARGET_PORT:$TARGET_
 envsubst $REPLACEABLE < /nginx.conf.template > /usr/local/nginx/conf/nginx.conf
 envsubst $REPLACEABLE < /modsecurity.conf.template > /usr/local/nginx/conf/modsecurity.conf
 
+
 /add_self_signed_certs.sh
 
 # Use exec so nginx can get signals directly
