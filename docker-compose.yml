@@ -7,8 +7,10 @@ services:
         environment:
             - SEC_RULE_ENGINE=On
             - HTTP_VERSION=1.1
-            - DOMAIN=testphp.vulnweb.com
-            - TARGET_PORT=80
-            - TARGET_HOST=testphp.vulnweb.com
+            - DOMAIN=localhost
+            - TARGET_PORT=1234
+            - TARGET_HOST=localhost
             - CLIENT_MAX_BODY_SIZE=200M
             - SSL_PORT=8443
+
+            
