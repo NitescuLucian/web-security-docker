@@ -90,7 +90,8 @@ It is recommended to run ``SEC_RULE_ENGINE`` with ``DetectionOnly`` value to ens
 
 You can always contact me on:
 - Twitter: [@LucianNitecu](https://twitter.com/LucianNitescu)
-- Linkedin: [@LucianNitecu](https://www.linkedin.com/in/luciannitescu/)
+- Linkedin: [Lucian Nitecu](https://www.linkedin.com/in/luciannitescu/)
+- 
 
 For any security issue or bugs please use the [github issue page](https://github.com/NitescuLucian/web-security-docker/issues) and please provide sufficient information.
 
