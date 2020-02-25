@@ -1,6 +1,21 @@
 # Web Security Docker
 
-One docker to rule them all!
+This docker container creates a basic nginx server that proxies incoming  SSL/TLS calls to a target host after they have been processed by the ModSecurity Web Application Firewall (WAF).
+
+In other words, it allows you to:
+- Protect against a wide range (but not all) of web attacks using ModSecurity Web Application Firewall
+- To configure an SSL/TLS certificate for a specific host
+- It uses Nginx proxy to direct traffic to your host. It can be placed "in front" of your host.
+
+ModSecurity protects against attacks by looking for:
+- SQL Injection
+- Ensuring the content type matches the body data.
+- Protection against malformed POST requests.
+- HTTP Protocol Protection
+- Real-time Blacklist Lookups
+- HTTP Denial of Service Protections
+- Generic Web Attack Protection
+
 
 ## Burp Suite Tests
 
@@ -31,7 +46,7 @@ other containers, so they can trust the installed certificate.
 ## Using own Certificate
 
 You can use existing SSL certificates for your ``DOMAIN``
-by connecting an volume onto ``/etc/nginx/certs`` with following files inside:
+by connecting an volume onto ``/usr/local/nginx/certs`` with following files inside:
 
 - ``key.pem``: private key file
 - ``cert.pem``: certificate file
@@ -45,8 +60,10 @@ version: '2'
 services:
     waf:
         build: waf
+        hostname: ngnix-security
+        restart: always
         ports:
-            - "8443:8443"
+            - 8443:8443
         environment:
             - SEC_RULE_ENGINE=On
             - HTTP_VERSION=1.1
@@ -55,7 +72,11 @@ services:
             - TARGET_HOST=testphp.vulnweb.com
             - CLIENT_MAX_BODY_SIZE=200M
             - SSL_PORT=8443
+        volumes: ['nginx-certs:/usr/local/nginx/certs']
+volumes: {"nginx-certs"}
 ```
+
+Note that for the above configuration, the private key and certificate files will be available under ``/var/lib/docker/volumes/websecuritydocker_nginx-certs/_data`` folder.
 
 ## Based on the following projects
 
@@ -64,8 +85,8 @@ services:
 
 ## Why?
 
-This docker was created for my own needs... I wanted something plain and simple to use.
+This docker was designed for my personal needs. I needed something plain and easy to use.
 
 ## Docker Hub Image
 
-You can get the publicly available docker image at the following location: [web-security-docker]()
+You can get the publicly available docker image at the following location: [web-security-docker](https://github.com/NitescuLucian/web-security-docker)
