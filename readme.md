@@ -7,7 +7,7 @@ In other words, it allows you to:
 - To configure an SSL/TLS certificate for a specific host
 - It uses Nginx proxy to direct traffic to your host. It can be placed "in front" of your host.
 
-ModSecurity protects against attacks by looking for:
+ModSecurity protects against web attacks by looking for:
 - SQL Injection
 - Ensuring the content type matches the body data.
 - Protection against malformed POST requests.
@@ -19,9 +19,13 @@ ModSecurity protects against attacks by looking for:
 
 ## Burp Suite Tests
 
+The implementation of a Web Application Firewall will never be the perfect and undefeated solution for your security issues at the level of your application. But it will for sure boost your security level. For this matter, I have run a full security audit using Burp Suite Pro against one of the most vulnerable web application called DVWA (Damn Vulnerable Web Application).
+
 | Unprotected DVWA | Protected DVWA |
 |------------------|----------------|
 |![Unprotected DVWA](https://i.imgur.com/8ia2yJt.png)|![Protected DVWA](https://i.imgur.com/mjb8F9o.png)|
+
+As you can see, this docker container is a significant boost to the security of the application. 
 
 ## Environment variables
 
@@ -78,14 +82,26 @@ volumes: {"nginx-certs"}
 
 Note that for the above configuration, the private key and certificate files will be available under ``/var/lib/docker/volumes/websecuritydocker_nginx-certs/_data`` folder.
 
+## Before you start
+
+It is recommended to run ``SEC_RULE_ENGINE`` with ``DetectionOnly`` value to ensure that the implementation will not block any application functionality. If no alerts are to be detected on normal use of the application, you can change the value to ``On``to block potential attacks.
+
+## Social and contact information
+
+You can always contact me on:
+- Twitter: [@LucianNitecu](https://twitter.com/LucianNitescu)
+- Linkedin: [@LucianNitecu](https://www.linkedin.com/in/luciannitescu/)
+
+For any security issue or bugs please use the [github issue page](https://github.com/NitescuLucian/web-security-docker/issues) and please provide sufficient information.
+
 ## Based on the following projects
 
 - docker-ssl-proxy: [https://github.com/fsouza/docker-ssl-proxy](https://github.com/fsouza/docker-ssl-proxy)
 - docker-waf: [https://github.com/theonemule/docker-waf](https://github.com/theonemule/docker-waf)
 
-## Why?
+## Why? It is not such a big deal...
 
-This docker was designed for my personal needs. I needed something plain and easy to use.
+This docker container was designed for my personal needs, and I needed something understandable, easy to deploy and easy to use (stupid proof level).
 
 ## Docker Hub Image
 
