@@ -102,7 +102,7 @@ For any security issue or bugs please use the [github issue page](https://github
 
 ## Why? It is not such a big deal...
 
-This docker container was designed for my personal needs, and I needed something understandable, easy to deploy and easy to use (stupid proof level).
+This docker container was designed for my personal needs, and I needed something understandable, easy to deploy and easy to use.
 
 ## Docker Hub Image
 
