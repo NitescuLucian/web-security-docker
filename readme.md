@@ -106,4 +106,4 @@ This docker container was designed for my personal needs, and I needed something
 
 ## Docker Hub Image
 
-You can get the publicly available docker image at the following location: [web-security-docker](https://github.com/NitescuLucian/web-security-docker)
+You can get the publicly available docker image at the following location: [web-security-docker](https://hub.docker.com/r/nitesculucian/web-security-docker)
