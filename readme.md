@@ -57,7 +57,23 @@ by connecting an volume onto ``/usr/local/nginx/certs`` with following files ins
 
 The certificate generator will check on existing ``key.pem`` and abort.
 
-## Demo docker-compose.yml
+## Demo using Docker Hub Image
+
+You can get the publicly available docker image at the following location: [web-security-docker](https://hub.docker.com/r/nitesculucian/web-security-docker)
+
+```
+docker run -e SEC_RULE_ENGINE=On -e HTTP_VERSION=1.1 -e DOMAIN=testphp.vulnweb.com -e TARGET_PORT=80 -e TARGET_HOST=testphp.vulnweb.com -e CLIENT_MAX_BODY_SIZE=200M -e SSL_PORT=8443 -p 8443:8443 -v nginx-certs:/usr/local/nginx/certs nitesculucian/web-security-docker:latest
+```
+
+## Demo using git repository and docker-compose.yml
+
+First of all clone the git repository:
+
+```
+git clone git@github.com:NitescuLucian/web-security-docker.git
+```
+
+Example of docker-compose.yml:
 
 ```yaml
 version: '2'
@@ -82,6 +98,12 @@ volumes: {"nginx-certs"}
 
 Note that for the above configuration, the private key and certificate files will be available under ``/var/lib/docker/volumes/websecuritydocker_nginx-certs/_data`` folder.
 
+Start everything up with:
+
+```
+docker-compose up --build
+```
+
 ## Before you start
 
 It is recommended to run ``SEC_RULE_ENGINE`` with ``DetectionOnly`` value to ensure that the implementation will not block any application functionality. If no alerts are to be detected on normal use of the application, you can change the value to ``On``to block potential attacks.
@@ -104,6 +126,5 @@ For any security issue or bugs please use the [github issue page](https://github
 
 This docker container was designed for my personal needs, and I needed something understandable, easy to deploy and easy to use.
 
-## Docker Hub Image
 
-You can get the publicly available docker image at the following location: [web-security-docker](https://hub.docker.com/r/nitesculucian/web-security-docker)
+
