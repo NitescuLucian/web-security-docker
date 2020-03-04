@@ -62,7 +62,7 @@ The certificate generator will check on existing ``key.pem`` and abort.
 You can get the publicly available docker image at the following location: [web-security-docker](https://hub.docker.com/r/nitesculucian/web-security-docker)
 
 ```
-docker run -e SEC_RULE_ENGINE=On -e HTTP_VERSION=1.1 -e DOMAIN=testphp.vulnweb.com -e TARGET_PORT=80 -e TARGET_HOST=testphp.vulnweb.com -e CLIENT_MAX_BODY_SIZE=200M -e SSL_PORT=8443 -p 8443:8443 -v nginx-certs:/usr/local/nginx/certs nitesculucian/web-security-docker:latest
+docker run -e SEC_RULE_ENGINE=On -e HTTP_VERSION=1.1 -e DOMAIN=testphp.vulnweb.com -e TARGET_PORT=80 -e TARGET_HOST=testphp.vulnweb.com -e CLIENT_MAX_BODY_SIZE=200M -e SSL_PORT=8443 -p 8443:8443 -v nginx-certs:/usr/local/nginx/certs nitesculucian/web-security-docker
 ```
 
 ## Demo using git repository and docker-compose.yml
@@ -125,6 +125,3 @@ For any security issue or bugs please use the [github issue page](https://github
 ## Why? It is not such a big deal...
 
 This docker container was designed for my personal needs, and I needed something understandable, easy to deploy and easy to use.
-
-
-
